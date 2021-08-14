@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  app:
+    container_name: ${APP_NAME}
+    build: 
+      dockerfile: ./docker/node.dockerfile
+      context: .
+    image: ferreirafelipe/api-school
+    ports: 
+      - "${APP_PORT}:3000"
+    networks:
+      - school-network
+    depends_on: 
+      - database
+
+  database:
+    image: postgres:13
+    container_name: postgres
+    volumes:
+      - ${DB_VOLUME}:/var/lib/postgresql/data
+    restart: always
+    env_file: 
+      - .env
+    ports: 
+      - ${DB_PORT}:5432
+    networks:
+      - school-network
+
+networks: 
+    school-network:
+      driver: bridge
