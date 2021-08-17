@@ -20,4 +20,4 @@
 - Rode `docker exec node yarn typeorm migration:run`
 
 ## Json insomina
-- [Link de Dowload](https://nodejs.org/en/)
+- [Link de Dowload](https://drive.google.com/file/d/1sgjoY3Lnq3nNOC0MTaCrGHziGnP0h-aA/view?usp=sharing)
