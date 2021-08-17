@@ -25,7 +25,7 @@ class CourseController {
 
         const courses = await courseService.list();
 
-        if(!courses) {
+        if(!courses.length) {
             return res.status(204).end();
         }
 
@@ -38,10 +38,6 @@ class CourseController {
         const id = parseInt(req.params.id);
 
         const course = await courseService.listById(id);
-
-        if(!course) {
-            return res.status(204).end();
-        }
 
         return res.status(200).json(course); 
     }

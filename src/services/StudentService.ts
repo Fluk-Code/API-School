@@ -1,7 +1,6 @@
 import { Student } from "../entities/Student";
 import { getCustomRepository } from "typeorm";
 import { StudentRepository } from "../repositories/StudentRepository";
-import { InvalidField } from "../errors/InvalidField";
 
 class StudentService {
     private readonly studentRepository: StudentRepository;

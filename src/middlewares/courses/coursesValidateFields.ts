@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { InvalidField } from "../../errors/InvalidField";
+import { MaxLengthField } from "../../errors/MaxLengthField";
+import { RequiredField } from "../../errors/RequiredField";
 
 export async function coursesValidateFields(
     req: Request,
@@ -9,11 +10,19 @@ export async function coursesValidateFields(
     const { description, program } = req.body;
 
     if (!description?.trim()) {
-        throw new InvalidField('description');
+        throw new RequiredField('description');
     }
     
     if (!program?.trim()) {
-        throw new InvalidField('program');
+        throw new RequiredField('program');
+    }
+
+    if (description.trim().length > 50) {
+      throw new MaxLengthField('description', 50);
+    }
+
+    if (program.trim().length > 50) {
+      throw new MaxLengthField('program', 50);
     }
 
     next();

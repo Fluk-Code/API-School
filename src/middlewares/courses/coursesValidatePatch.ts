@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { InvalidField } from "../../errors/InvalidField";
+import { RequiredField } from "../../errors/RequiredField";
 
 export async function coursesValidatePatch(
     req: Request,
@@ -9,7 +9,7 @@ export async function coursesValidatePatch(
     const { description, program } = req.body;
 
     if (!description?.trim() && !program?.trim()) {
-        throw new InvalidField('');
+        throw new RequiredField('');
     }
 
     next();

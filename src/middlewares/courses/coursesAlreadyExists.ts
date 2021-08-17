@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { getCustomRepository } from "typeorm";
-import { BadRequest } from "../../errors/BadRequest";
+import { NotFound } from "../../errors/NotFound";
 import { CourseRepository } from "../../repositories/CourseRepository";
 
 export async function coursesAlreadyExists(
@@ -16,7 +16,7 @@ export async function coursesAlreadyExists(
     const coursesAlreadyExists = await coursesRepository.findOne(id);
 
     if(!coursesAlreadyExists){
-        throw new BadRequest("students", id);
+        throw new NotFound("courses", id);
     };
 
     next();

@@ -32,6 +32,20 @@ app.use( courseStudentsRouters );
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
+    if( err instanceof Error && 
+        err.name === "RequiredField" ||
+        err.name === "MaxLengthField" ){
+        return res.status(400).json({
+            message: err.message
+        })
+    }
+
+    if( err instanceof Error && err.name === "MaxLengthField"){
+        return res.status(400).json({
+            message: err.message
+        })
+    }
+
     if( err instanceof Error && err.name === "Conflict" ) {
         return res.status(409).json({
             message: err.message

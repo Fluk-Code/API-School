@@ -1,7 +1,6 @@
 import { Course } from "../entities/Course";
 import { getCustomRepository } from "typeorm";
 import { CourseRepository } from "../repositories/CourseRepository";
-import { InvalidField } from "../errors/InvalidField";
 
 class CourseService {
     private readonly courseRepository: CourseRepository;

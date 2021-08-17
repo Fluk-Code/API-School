@@ -23,7 +23,7 @@ class StudentController {
 
         const students = await studentService.list();
 
-        if(!students) {
+        if(!students.length) {
             return res.status(204).end();
         }
 
@@ -36,10 +36,6 @@ class StudentController {
         const id = parseInt(req.params.id);
 
         const students = await studentService.listById(id);
-        
-        if(!students) {
-            return res.status(204).end();
-        }
 
         return res.status(200).json(students);  
     }
