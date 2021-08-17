@@ -1,5 +1,11 @@
 # API Escola
 
+## Técnologias
+- NodeJs
+- Express
+- Typeorm
+- Postgres
+
 ## Requisitos
 - Docker composer
 
